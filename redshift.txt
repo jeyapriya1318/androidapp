@@ -1,0 +1,99 @@
+Redshift 
+--------------------
+
+Datawarehosuing
+------------------
+Database --- collection of data -- RDS 
+
+Storage -- s3,efs,ebs,glacier
+3nd party storage -- 
+
+Datawarehousing --- amazon redshift -- structure table  --- collection of database -- analyse
+
+database 
+
+userid  name 		mailid 		phno 	time 	order
+54637   jeyapriya	ghd@gmail.com	684636  5.30pm   Tea
+54637   jeyapriya	ghd@gmail.com	684636  5.30pm   pizza
+54637   jeyapriya	ghd@gmail.com	684636  5.30pm   dosa
+54637   jeyapriya	ghd@gmail.com	684636  5.30pm   pizza
+
+
+create table tablename;
+select * from tablename;
+
+
+create table shoes(shoetype varchar(10),color varchar(10));
+
+insert into shoes values ('loafers', 'brown'),('sandals', 'black');
+
+select * from shoes;
+
+create table users(
+	userid integer not null distkey sortkey,
+	username char(8),
+	firstname varchar(30),
+	lastname varchar(30),
+	city varchar(30),
+	state char(2),
+	email varchar(100),
+	phone char(14),
+	likesports boolean,
+	liketheatre boolean,
+	likeconcerts boolean,
+	likejazz boolean,
+	likeclassical boolean,
+	likeopera boolean,
+	likerock boolean,
+	likevegas boolean,
+	likebroadway boolean,
+	likemusicals boolean);
+
+
+
+
+create table sales(
+	salesid integer not null,
+	listid integer not null distkey,
+	sellerid integer not null,
+	buyerid integer not null,
+	eventid integer not null,
+	dateid smallint not null sortkey,
+	qtysold smallint not null,
+	pricepaid decimal(8,2),
+	commission decimal(8,2),
+	saletime timestamp);
+
+
+copy users from 's3://awsrecommended/allusers_pipe.txt' 
+credentials 'arn:aws:iam::419036042586:role/redshift_Roles' 
+delimiter '|' region 'us-east-1';
+
+
+Redshift --- 
+
+IAM Role -- redshift -- s3 access
+s3 bucket create -- 3 object paste
+redshift -- collection of database
+
+
+cluster --- group
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
